@@ -18,7 +18,7 @@ export const useSunriseStore = defineStore("sunrise", {
           const baseApiUrl = 'https://api.sunrisesunset.io'
           const url = `${baseApiUrl}/json?lat=${lat}&lng=${lng}`
           const response = await axios.get(url)
-          this.today = response.data.results
+          this.today = response.data.results as Day
           }
           catch (error) {
             console.log(error)

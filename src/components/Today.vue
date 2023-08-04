@@ -1,6 +1,18 @@
 <script setup lang="ts">
-  import { onMounted, computed } from "vue";
+  import { onMounted, computed, ComputedRef } from "vue";
   import { useSunriseStore } from "../store/sunrise";
+
+  interface Day {
+    'first_light': string,
+    'dawn': string,
+    'sunrise': string,
+    'solar_noon': string,
+    'golden_hour': string,
+    'sunset': string,
+    'last_light': string,
+    'day_length': string,
+  }
+
   const store = useSunriseStore();
 
   const propsToShow = [
@@ -15,7 +27,7 @@
   ]
   const formatKey = (key: String) => key.replace('_',' ')
 
-  const today = computed(() => store.today);
+  const today: ComputedRef<Day> = computed(() => store.today as Day);
   onMounted(() => {
     store.fetchTodayInfo();
   });
@@ -29,7 +41,7 @@
     <v-list-item
       v-for="key in propsToShow"
       :key="key"
-      :title="today[key]"
+      :title="today[key as keyof Day]"
       :subtitle="formatKey(key)"
     ></v-list-item>
   </v-list>
