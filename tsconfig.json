@@ -16,7 +16,8 @@
     "typeRoots": [
       "src/types/**/*",
       "src/utils/types/**/*",
-      "src/utils/types/*.d.ts"
+      "src/utils/types/*.d.ts",
+      "./node_modules/vuetify/types"
     ],
     // "paths": {
     //   "@/*": [
