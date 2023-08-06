@@ -1,13 +1,17 @@
 declare type Day = {
-  "sunrise": string,
-  "sunset": string,
-  "first_light": string,
-  "last_light": string,
-  "dawn": string,
-  "dusk": string,
-  "solar_noon": string,
-  "golden_hour": string,
-  "day_length": string,
-  "timezone": string,
-  "utc_offset": number
-};
+  'first_light': string,
+  'dawn': string,
+  'sunrise': string,
+  'solar_noon': string,
+  'golden_hour': string,
+  'sunset': string,
+  'last_light': string,
+  'day_length': string,
+}
+
+declare type TimeEvent = {
+    key: string,
+    title: string,
+    value: string,
+    color: string,
+  }
