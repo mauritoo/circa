@@ -6,15 +6,21 @@ export const useSunriseStore = defineStore("sunrise", {
     state: () => ({
         days: [],
         today: {},
+        isLoading: false,
     }),
     getters: {
       getToday(state){
           return state.today
+        },
+      getIsLoading(state){
+          return state.isLoading
         }
     },
     actions: {
       async fetchTodayInfo(lat: number = 39.577185, lng: number = -0.537712) {
         try {
+          this.isLoading = true
+          console.log('fetching......')
           const baseApiUrl = 'https://api.sunrisesunset.io'
           const url = `${baseApiUrl}/json?lat=${lat}&lng=${lng}`
           const response = await axios.get(url)
@@ -22,6 +28,8 @@ export const useSunriseStore = defineStore("sunrise", {
           }
           catch (error) {
             console.log(error)
+        } finally {
+          this.isLoading = false
         }
       }
     },
