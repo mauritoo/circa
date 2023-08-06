@@ -1,9 +1,12 @@
 <script setup lang="ts">
-  import Today from './components/Today.vue'
+  // import Today from './views/Today.vue'
+  // import SelectPlace from './views/SelectPlace.vue'
 </script>
 
 <template>
-  <Today/>
+  <!-- <Today/> -->
+  <!-- <SelectPlace/> -->
+  <router-view></router-view>
 </template>
 
 <style scoped>

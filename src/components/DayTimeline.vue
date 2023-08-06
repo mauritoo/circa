@@ -43,6 +43,7 @@
 <style scoped lang="scss">
 .timeline {
   height: 70vh !important;
+  grid-row-gap: 20px !important;
 }
 .item-text {
   /* color: rgb(164, 163, 163); */

@@ -16,6 +16,9 @@ export const useSunriseStore = defineStore("sunrise", {
           'day_length': '',          
         } as Day,
         isLoading: false,
+        isError: false,
+        isResponseOk: false,
+        placeName: '',
     }),
     getters: {
       getToday(state){
@@ -23,19 +26,30 @@ export const useSunriseStore = defineStore("sunrise", {
         },
       getIsLoading(state){
           return state.isLoading
+        },
+      getIsError(state){
+          return state.isError
         }
     },
     actions: {
-      async fetchTodayInfo(lat: number = 39.577185, lng: number = -0.537712) : Promise<Object> {
+      async fetchTodayInfo(placeName: string, lat: number = 39.577185, lng: number = -0.537712) : Promise<Object> {
         try {
           this.isLoading = true
-          console.log('fetching......')
+          this.isError = false
           const baseApiUrl = 'https://api.sunrisesunset.io'
           const url = `${baseApiUrl}/json?lat=${lat}&lng=${lng}`
           const response = await axios.get(url)
-          this.today = response.data.results as Day
+          if (response.data.status === 'OK') {
+            this.today = response.data.results as Day
+            this.isResponseOk = true
+            this.placeName = placeName
+          } else {
+            this.isError = true
+            throw new Error(response.data.body)
+          }
         }
         catch (error) {
+          this.isError = true
           console.log(error)
         } finally {
           this.isLoading = false

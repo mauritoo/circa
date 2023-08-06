@@ -10,40 +10,29 @@ $starFieldWidth: 2560;
 $starFieldHeight: 2560;
 $starStartOffset: 600px;
 
-$starOneScrollDuration: 100s;
-$starTwoScrollDuration: 125s;
-$starThreeScrollDuration: 175s;
+$starOneScrollDuration: 500s;
+$starTwoScrollDuration: 625s;
+$starThreeScrollDuration: 775s;
 $numStarOneStars: 1700;
-$numStarTwoStars: 700;
-$numStarThreeStars: 200;
+$numStarTwoStars: 400;
+$numStarThreeStars: 100;
 $numComet: 10;
 
 html {
-  height: 100%;
+  height: -webkit-fill-available;
   body {
     width: 100%;
-    height: 100%;
+    height: -webkit-fill-available;
+    background: linear-gradient(to bottom, #201c2f 0%, #100751 100%);
     margin: 0;
   }
 }
 
-.main-container {
-  display: block;
-  position: relative;
-  // height: calc(100vh - 56px);
-  // height: 100%;
-  background: linear-gradient(to bottom, #201c2f 0%, #100751 100%);
-}
-
-.day {
-  height: 100vh;
-}
-
 @function create-stars($n) {
-  $stars: "#{random($starFieldWidth)}px #{random($starFieldHeight)}px #FFF";
+  $stars: "#{random($starFieldWidth)}px #{random($starFieldHeight)}px #c2c2c2";
 
   @for $i from 2 through $n {
-    $stars: "#{$stars} , #{random($starFieldWidth)}px #{random($starFieldHeight)}px #FFF";
+    $stars: "#{$stars} , #{random($starFieldWidth)}px #{random($starFieldHeight)}px #c2c2c2";
   }
   @return unquote($stars);
 }
@@ -95,7 +84,7 @@ html {
   @include star-template($numStarThreeStars, 3px, $starThreeScrollDuration);
 }
 .comet {
-  @include shooting-star-template($numComet, 5px, 10s);
+  @include shooting-star-template($numComet, 5px, 50s);
 }
 
 @keyframes animStar {
