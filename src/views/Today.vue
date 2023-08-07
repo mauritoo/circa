@@ -53,7 +53,7 @@
     Object.keys(today.value).forEach((key) => {
       const index = dayTimeEvents.value.findIndex(dte => dte.key === key)
       if (index !== -1)
-        dayTimeEvents.value[index] = {...dayTimeEvents.value[index], 'value': formatTime(today.value[key])}
+        dayTimeEvents.value[index] = {...dayTimeEvents.value[index], 'value': formatTime(today.value[key as keyof Day])}
     });
     const now = new Date();
     const timeNow = now.getHours() + ":" + String(now.getMinutes()).padStart(2, "0");
