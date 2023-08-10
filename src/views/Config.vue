@@ -1,0 +1,3 @@
+<template>
+  Config.vue
+</template>

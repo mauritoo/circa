@@ -36,7 +36,7 @@ export const useSunriseStore = defineStore("sunrise", {
         try {
           this.isLoading = true
           this.isError = false
-          const baseApiUrl = 'https://api.sunrisesunset.io'
+          const baseApiUrl = import.meta.env.VITE_BASE_API_SUNRISE
           const url = `${baseApiUrl}/json?lat=${lat}&lng=${lng}`
           const response = await axios.get(url)
           if (response.data.status === 'OK') {

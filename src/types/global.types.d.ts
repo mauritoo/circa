@@ -15,3 +15,11 @@ declare type TimeEvent = {
     value: string,
     color: string,
   }
+
+  declare type MyLocation = {
+    country?: string,
+    lat?: number,
+    lon?: number,
+    name?: string,
+    state?: string,
+  }

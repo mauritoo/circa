@@ -1,7 +1,5 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto');
-
 :root {
-  font-family: Roboto, Arial, Helvetica, sans-serif;
+  // font-family: 'Borel';
   /* background: -webkit-linear-gradient(180deg, #78b7fe,#5e86f4,#565de9);
   background: #012759; */
 }
@@ -26,6 +24,13 @@ html {
     background: linear-gradient(to bottom, #201c2f 0%, #100751 100%);
     margin: 0;
   }
+}
+.main-container {
+  height: 100%;
+}
+
+a {
+  text-decoration: none;
 }
 
 @function create-stars($n) {
