@@ -53,7 +53,6 @@ const getAndSortInfo = async () => {
     placeName.value = store.placeName;
   } else {
     placeName.value = store.placeName;
-    console.log('ya teniamos today....', today.value);
   }
   Object.keys(today.value).forEach((key) => {
     const index = dayTimeEvents.value.findIndex((dte) => dte.key === key);

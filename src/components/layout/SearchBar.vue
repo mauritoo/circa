@@ -25,12 +25,14 @@ const fetchLocations = async () => {
 };
 
 const hideNoData = computed(() => search.value === '');
+const autoco = ref();
 
 watch(search, () => {
   search.value && search.value !== select.value && fetchLocations();
 });
 watch(select, async () => {
   if (select.value) {
+    autoco.value.blur();
     const name = `${select.value.name} (${select.value.country})`;
     await sunriseStore.fetchTodayInfo(
       name,
@@ -48,6 +50,7 @@ const noDataText = computed(() =>
 <template>
   <v-form @submit.prevent>
     <v-autocomplete
+      ref="autoco"
       v-model="select"
       v-model:search="search"
       :loading="loading"
@@ -55,6 +58,7 @@ const noDataText = computed(() =>
       class="mx-2 flex-full-width"
       density="comfortable"
       prepend-inner-icon="mdi-magnify"
+      :menu-props="{ closeOnContentClick: true }"
       hide-details
       :hide-no-data="hideNoData"
       item-props

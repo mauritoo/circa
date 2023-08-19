@@ -44,13 +44,11 @@ watch(search, () => {
 });
 watch(select, async () => {
   if (select.value) {
-    console.log('cambio la seleccion', select.value);
     await sunriseStore.fetchTodayInfo(
       select.value.name,
       Number(select.value.lat),
       Number(select.value.lon)
     );
-    console.log(sunriseStore.today);
     if (!isSearchError.value) {
       router.push('/today');
     }

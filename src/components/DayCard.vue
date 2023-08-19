@@ -67,13 +67,12 @@ const getDotSize = (key: string) => (key !== 'now' ? '15px' : '8px');
 const removeDay = () => sunriseStore.cleanLocalStorage();
 
 onMounted(() => {
-  console.log('placeName en la card', placeName.value);
   getAndSortInfo();
 });
 </script>
 <template>
   <v-card class="mx-4 mt-12 flex-wrap" rounded="xl" variant="flat">
-    <div class="px-6 mt-4 mb-2 d-flex justify-space-between">
+    <div class="px-6 mt-4 mb-2 d-flex justify-space-between align-center">
       <div class="title">{{ placeName }}</div>
       <v-icon @click="removeDay">mdi-close-outline</v-icon>
     </div>

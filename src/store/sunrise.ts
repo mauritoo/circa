@@ -63,8 +63,9 @@ export const useSunriseStore = defineStore('sunrise', {
           this.today = response.data.results as Day;
           this.isResponseOk = true;
           this.dayLoaded = true;
-          this.placeName = placeName;
-          localStorage.setItem('placeName', placeName);
+          this.placeName =
+            placeName.charAt(0).toUpperCase() + placeName.slice(1);
+          localStorage.setItem('placeName', this.placeName);
           localStorage.setItem('today', JSON.stringify(this.today));
         } else {
           this.isError = true;

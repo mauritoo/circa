@@ -18,7 +18,9 @@ onMounted(() => {
     <div class="w-100 text-center title my-3">CIRCA</div>
     <div class="below-title d-flex flex-column">
       <SearchBar class="mt-4 px-2" />
-      <div v-if="isLoading" class="day pa-5 text-center">Cargando...</div>
+      <div v-if="isLoading" class="day mt-15 text-center">
+        <v-progress-circular indeterminate color="white"></v-progress-circular>
+      </div>
       <Transition name="slide-fade">
         <DayCard v-if="dayLoaded" />
       </Transition>
