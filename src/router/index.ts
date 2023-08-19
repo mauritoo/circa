@@ -1,25 +1,33 @@
-import { createWebHistory, createRouter } from "vue-router";
-import Today from "../views/Today.vue";
-import Config from "../views/Config.vue";
-import SelectPlace from "../views/SelectPlace.vue";
+import { createWebHistory, createRouter } from 'vue-router';
+// import Today from "../views/Today.vue";
+// import Config from "../views/Config.vue";
+// import SelectPlace from "../views/SelectPlace.vue";
+import Dashboard from '../views/Dashboard.vue';
 
 const routes = [
   {
-    path: "/",
-    name: "search",
-    component: SelectPlace,
-  },
-  {
-    path: "/today",
-    name: "Today",
-    component: Today,
-  },
-  {
-    path: "/config",
-    name: "Config",
-    component: Config,
+    path: '/',
+    name: 'dashboard',
+    component: Dashboard,
   },
 ];
+// const routes = [
+//   {
+//     path: "/",
+//     name: "search",
+//     component: SelectPlace,
+//   },
+//   {
+//     path: "/today",
+//     name: "Today",
+//     component: Today,
+//   },
+//   {
+//     path: "/config",
+//     name: "Config",
+//     component: Config,
+//   },
+// ];
 
 const router = createRouter({
   history: createWebHistory(),

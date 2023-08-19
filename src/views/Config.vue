@@ -1,3 +1,1 @@
-<template>
-  Config.vue
-</template>
+<template>Config.vue</template>

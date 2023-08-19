@@ -1,44 +1,42 @@
 <script setup lang="ts">
+const props = defineProps({
+  dayTimeEvents: {
+    type: Array<TimeEvent>,
+    required: true,
+  },
+});
 
-  const props = defineProps({
-    dayTimeEvents: {
-      type: Array<TimeEvent>,
-      required: true
-    },
-  })
-
-  const getItemClass = (index: number): string =>
-    index === props.dayTimeEvents.length-1 
+const getItemClass = (index: number): string =>
+  index === props.dayTimeEvents.length - 1
     ? 'last'
-    : (index === props.dayTimeEvents.length-2 
-      ? 'previous' 
-      : '')  
+    : index === props.dayTimeEvents.length - 2
+    ? 'previous'
+    : '';
 
-  const getDotSize = (key: string) => 
-    key !== 'now' ? "15px" : "8px"
+const getDotSize = (key: string) => (key !== 'now' ? '15px' : '8px');
 </script>
 <template>
-    <v-timeline 
-      class="timeline" 
-      side="end"
-      truncate-line="both"
-      height="200px"
-      line-color="#7a7a7a"
-      line-thickness="2">
-
-      <v-timeline-item
-        v-for="evt, index in dayTimeEvents"
-        :key="evt.key"
-        :dot-color="evt.color"
-        :size="getDotSize(evt.key)"
-        :class="getItemClass(index)"
-        >
-        <template v-slot:opposite>
-          <span class="text-overline item-key">{{ evt.value }}</span>
-        </template>
-        <div class="text-body-2 item-text">{{ evt.title }}</div>
-      </v-timeline-item>
-    </v-timeline>
+  <v-timeline
+    class="timeline"
+    side="end"
+    truncate-line="both"
+    height="200px"
+    line-color="#7a7a7a"
+    line-thickness="2"
+  >
+    <v-timeline-item
+      v-for="(evt, index) in dayTimeEvents"
+      :key="evt.key"
+      :dot-color="evt.color"
+      :size="getDotSize(evt.key)"
+      :class="getItemClass(index)"
+    >
+      <template v-slot:opposite>
+        <span class="text-overline item-key">{{ evt.value }}</span>
+      </template>
+      <div class="text-body-2 item-text">{{ evt.title }}</div>
+    </v-timeline-item>
+  </v-timeline>
 </template>
 <style scoped lang="scss">
 .timeline {
@@ -52,10 +50,10 @@
 }
 .item-key {
   font-size: 14px !important;
-  color: #FFF;
+  color: #fff;
 }
 :deep(.previous .v-timeline-divider__after),
-  :deep(.last .v-timeline-divider__before) {
+:deep(.last .v-timeline-divider__before) {
   display: none;
 }
 :deep(.last) {
