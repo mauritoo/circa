@@ -2,22 +2,23 @@
 
 html, body {
   font-family: 'Bricolage Grotesque', sans-serif;
+  height: -webkit-fill-available;
 }
 
 #app {
   font-family: 'Bricolage Grotesque', sans-serif;
+  height: -webkit-fill-available;
+  background-color: rgb(107 175 255);
 }
 
 html {
-  height: -webkit-fill-available;
   body {
     width: 100%;
-    height: -webkit-fill-available;
     margin: 0;
   }
 }
-.main-container {
-  height: 100%;
+.v-layout, .v-main, .main-container {
+  height: -webkit-fill-available;
 }
 
 a {

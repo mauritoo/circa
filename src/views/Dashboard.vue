@@ -14,12 +14,37 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="main-container w-100">
-    <div class="day pa-2">
-      <div class="w-100 text-center title mt-4">CIRCA</div>
-      <SearchBar class="mt-8 px-2" />
+  <div class="main-container w-100 px-2">
+    <div class="w-100 text-center title my-3">CIRCA</div>
+    <div class="below-title d-flex flex-column">
+      <SearchBar class="mt-4 px-2" />
       <div v-if="isLoading" class="day pa-5 text-center">Cargando...</div>
-      <DayCard v-else-if="dayLoaded" />
+      <Transition name="slide-fade">
+        <DayCard v-if="dayLoaded" />
+      </Transition>
     </div>
   </div>
 </template>
+
+<style lang="scss" scoped>
+.title {
+  color: #ffffff;
+}
+.below-title {
+  height: calc(100% - 65px);
+}
+.slide-fade-enter-active {
+  transition: all 0.3s ease-out;
+}
+
+.slide-fade-leave-active {
+  transition: all 0.5s;
+}
+
+.slide-fade-enter-from {
+  transform: translateY(300px);
+}
+.slide-fade-leave-to {
+  transform: translateX(360px);
+}
+</style>

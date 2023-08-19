@@ -72,7 +72,7 @@ onMounted(() => {
 });
 </script>
 <template>
-  <v-card class="mx-4 mt-12 flex-wrap" rounded="xl" variant="outlined">
+  <v-card class="mx-4 mt-12 flex-wrap" rounded="xl" variant="flat">
     <div class="px-6 mt-4 mb-2 d-flex justify-space-between">
       <div class="title">{{ placeName }}</div>
       <v-icon @click="removeDay">mdi-close-outline</v-icon>
@@ -120,5 +120,8 @@ onMounted(() => {
 }
 :deep(.last) {
   margin-top: 10px;
+}
+.v-card {
+  background-color: #ffffff;
 }
 </style>

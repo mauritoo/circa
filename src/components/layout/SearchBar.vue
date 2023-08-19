@@ -46,35 +46,33 @@ const noDataText = computed(() =>
 </script>
 
 <template>
-  <v-sheet class="mx-auto">
-    <v-form @submit.prevent>
-      <v-autocomplete
-        v-model="select"
-        v-model:search="search"
-        :loading="loading"
-        :items="locations"
-        class="mx-2 flex-full-width"
-        density="comfortable"
-        hide-details
-        :hide-no-data="hideNoData"
-        placeholder="Buscar..."
-        item-props
-        menu-icon=""
-        single-line
-        rounded
-        clearable
-        theme="light"
-        variant="solo"
-      >
-        <template #no-data>
-          <span class="px-4">{{ noDataText }}</span>
-        </template>
-      </v-autocomplete>
-      <div class="w-100 mt-2 clarify px-2">
-        Buscá un lugar para ver las horas de salida y puesta del sol
-      </div>
-    </v-form>
-  </v-sheet>
+  <v-form @submit.prevent>
+    <v-autocomplete
+      v-model="select"
+      v-model:search="search"
+      :loading="loading"
+      :items="locations"
+      class="mx-2 flex-full-width"
+      density="comfortable"
+      prepend-inner-icon="mdi-magnify"
+      hide-details
+      :hide-no-data="hideNoData"
+      item-props
+      menu-icon=""
+      single-line
+      rounded
+      clearable
+      theme="light"
+      variant="solo"
+    >
+      <template #no-data>
+        <span class="px-4">{{ noDataText }}</span>
+      </template>
+    </v-autocomplete>
+    <div class="w-100 mt-2 clarify px-2">
+      Buscá un lugar para ver las horas de salida y puesta del sol
+    </div>
+  </v-form>
 </template>
 <style lang="scss" scoped>
 .place-name {
@@ -87,5 +85,9 @@ const noDataText = computed(() =>
 .clarify {
   font-size: 11px;
   font-style: italic;
+  color: #e0e0e0;
+}
+:deep(.v-field) {
+  box-shadow: none;
 }
 </style>
