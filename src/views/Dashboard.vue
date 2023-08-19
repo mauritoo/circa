@@ -18,17 +18,8 @@ onMounted(() => {
     <div class="day pa-2">
       <div class="w-100 text-center title mt-4">CIRCA</div>
       <SearchBar class="mt-8 px-2" />
-      <div class="w-100 mt-2 clarify px-4">
-        Buscá un lugar para ver las horas de salida y puesta del sol
-      </div>
       <div v-if="isLoading" class="day pa-5 text-center">Cargando...</div>
       <DayCard v-else-if="dayLoaded" />
     </div>
   </div>
 </template>
-
-<style scoped>
-.clarify {
-  font-size: 12px;
-}
-</style>

@@ -41,7 +41,7 @@ watch(select, async () => {
 });
 
 const noDataText = computed(() =>
-  search.value && !loading.value ? 'No se encontraron resultados' : 'perrito'
+  search.value && !loading.value ? 'No se encontraron resultados' : ''
 );
 </script>
 
@@ -70,6 +70,9 @@ const noDataText = computed(() =>
           <span class="px-4">{{ noDataText }}</span>
         </template>
       </v-autocomplete>
+      <div class="w-100 mt-2 clarify px-2">
+        Buscá un lugar para ver las horas de salida y puesta del sol
+      </div>
     </v-form>
   </v-sheet>
 </template>
@@ -80,5 +83,9 @@ const noDataText = computed(() =>
 .state-country {
   color: rgb(199, 199, 199);
   font-size: 12px;
+}
+.clarify {
+  font-size: 11px;
+  font-style: italic;
 }
 </style>
