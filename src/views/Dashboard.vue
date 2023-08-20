@@ -3,6 +3,7 @@ import { onMounted, computed, ComputedRef } from 'vue';
 import { useSunriseStore } from '../store/sunrise';
 import DayCard from '../components/DayCard.vue';
 import SearchBar from '../components/layout/SearchBar.vue';
+import logoUrl from '../assets/images/white-logo.svg';
 
 const store = useSunriseStore();
 const isLoading: ComputedRef<Boolean> = computed(() => store.isLoading);
@@ -14,8 +15,9 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="main-container w-100 px-2">
-    <div class="w-100 text-center title my-3">CIRCA</div>
+  <div class="main-container w-100 px-2 text-center">
+    <!-- <div class="w-100 text-center title my-3">CIRCA</div> -->
+    <img class="app-logo px-10 mt-2" :src="logoUrl" />
     <div class="below-title d-flex flex-column">
       <SearchBar class="mt-4 px-2" />
       <div v-if="isLoading" class="day mt-15 text-center">
@@ -31,6 +33,9 @@ onMounted(() => {
 <style lang="scss" scoped>
 .title {
   color: #ffffff;
+}
+.app-logo {
+  height: 50px;
 }
 .below-title {
   height: calc(100% - 65px);
