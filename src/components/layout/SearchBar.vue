@@ -73,7 +73,7 @@ const noDataText = computed(() =>
         <span class="px-4">{{ noDataText }}</span>
       </template>
     </v-autocomplete>
-    <div class="w-100 mt-2 clarify px-2">
+    <div class="w-100 mt-2 clarify text-center">
       Buscá un lugar para ver las horas de salida y puesta del sol
     </div>
   </v-form>
@@ -89,7 +89,7 @@ const noDataText = computed(() =>
 .clarify {
   font-size: 11px;
   font-style: italic;
-  color: #e0e0e0;
+  color: #ffffff;
 }
 :deep(.v-field) {
   box-shadow: none;

@@ -22,3 +22,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+yarn.lock
+.prettierrc.json
+.prettierrc.config.js
+.eslintrc.js
