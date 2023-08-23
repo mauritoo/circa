@@ -25,7 +25,7 @@ export const useLocationStore = defineStore('location', {
   actions: {
     async fetchLocations(
       placeName: string = '',
-      limit: number = 5
+      limit: number = 15
     ): Promise<MyLocation[]> {
       try {
         this.isLoading = true;

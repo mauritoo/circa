@@ -1,8 +1,7 @@
 <script setup lang="ts">
-import { onMounted } from 'vue';
+import { computed, ref, onMounted } from 'vue';
 import { useSunriseStore } from '../store/sunrise';
 import { formatTime } from '../helpers/time';
-import { computed, ref } from 'vue';
 
 const sunriseStore = useSunriseStore();
 

@@ -24,7 +24,7 @@ onMounted(() => {
         <v-progress-circular indeterminate color="white"></v-progress-circular>
       </div>
       <Transition name="slide-fade">
-        <DayCard v-if="dayLoaded" />
+        <DayCard v-if="dayLoaded && !isLoading" />
       </Transition>
     </div>
   </div>

@@ -50,8 +50,8 @@ export const useSunriseStore = defineStore('sunrise', {
     },
     async fetchTodayInfo(
       placeName: string,
-      lat: number = 39.577185,
-      lng: number = -0.537712
+      lat: number,
+      lng: number
     ): Promise<Object> {
       try {
         this.isLoading = true;
