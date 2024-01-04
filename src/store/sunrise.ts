@@ -21,15 +21,9 @@ export const useSunriseStore = defineStore('sunrise', {
     placeName: '',
   }),
   getters: {
-    getToday(state) {
-      return state.today;
-    },
-    getIsLoading(state) {
-      return state.isLoading;
-    },
-    getIsError(state) {
-      return state.isError;
-    },
+    getToday: (state) => state.today,
+    getIsLoading: (state) => state.isLoading,
+    getIsError: (state) => state.isError,
   },
   actions: {
     cleanLocalStorage() {

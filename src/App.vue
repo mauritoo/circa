@@ -7,7 +7,6 @@
     <v-main class="d-flex align-center justify-center">
       <router-view></router-view>
     </v-main>
-    <!-- <Menu /> -->
   </v-layout>
 </template>
 

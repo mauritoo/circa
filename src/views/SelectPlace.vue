@@ -58,6 +58,7 @@ watch(select, async () => {
 const noDataText = computed(() =>
   search.value && !loading.value ? 'No se encontraron resultados' : ''
 );
+
 lastLocations.value = [
   {
     name: 'Hurlingham',

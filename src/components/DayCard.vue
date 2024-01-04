@@ -52,8 +52,6 @@ const getAndSortInfo = async () => {
   dayTimeEvents.value.push(lastProp);
 };
 
-const placeName = computed(() => sunriseStore.placeName);
-
 const getItemClass = (index: number): string =>
   index === dayTimeEvents.value.length - 1
     ? 'last'
@@ -63,18 +61,17 @@ const getItemClass = (index: number): string =>
 
 const getDotSize = (key: string) => (key !== 'now' ? '15px' : '8px');
 
-const removeDay = () => sunriseStore.cleanLocalStorage();
-
 onMounted(() => {
   getAndSortInfo();
 });
 </script>
 <template>
-  <v-card class="mx-4 mt-12 flex-wrap" rounded="xl" variant="flat">
-    <div class="px-6 mt-4 mb-2 d-flex justify-space-between align-center">
-      <div class="title">{{ placeName }}</div>
-      <v-icon @click="removeDay">mdi-close-outline</v-icon>
-    </div>
+  <v-card
+    class="mx-4 mt-2 flex-wrap"
+    outlined
+    color="transparent"
+    elevation="0"
+  >
     <v-card-text>
       <v-timeline
         class="timeline"
@@ -120,6 +117,8 @@ onMounted(() => {
   margin-top: 10px;
 }
 .v-card {
-  background-color: #ffffff;
+  border: solid 1px #7e9cdd !important;
+  border-radius: 3px;
+  color: #ededed !important;
 }
 </style>

@@ -1,31 +1,38 @@
 <script setup lang="ts">
 import { useSunriseStore } from '../../store/sunrise';
 import { useLocationStore } from '../../store/location';
-import { computed, ref, watch } from 'vue';
+import { useWeatherStore } from '../../store/weather';
+import { Ref, computed, ref, watch } from 'vue';
+import { ComputedRef } from 'vue';
 
 const sunriseStore = useSunriseStore();
 const locationStore = useLocationStore();
+const weatherStore = useWeatherStore();
 
 const search = ref('');
 const select = ref();
-const locations = ref();
-const loading = computed(() => locationStore.isLoading);
+const locations: Ref<{ value: MyLocation; title: string }[]> = ref([]);
+const loading: ComputedRef<boolean> = computed(() => locationStore.isLoading);
 
 const fetchLocations = async () => {
-  const response: MyLocation[] = await locationStore.fetchLocations(
-    search.value
-  );
-  if (response && response.length > 0)
-    locations.value = response.map((loc) => ({
+  await locationStore.fetchLocations(search.value);
+};
+
+const hideNoData: ComputedRef<boolean> = computed(() => search.value === '');
+const autoco = ref();
+
+watch(
+  () => locationStore.locations,
+  function () {
+    const storeLocations: MyLocation[] = locationStore.getLocations;
+    locations.value = storeLocations.map((loc) => ({
       value: loc,
-      title: `${loc.name} ${loc.state ? ', ' + loc.state : ''} ${
+      title: `${loc.name}${loc.state ? ', ' + loc.state : ' '}${
         loc.country ? ', ' + loc.country : ''
       }`,
     }));
-};
-
-const hideNoData = computed(() => search.value === '');
-const autoco = ref();
+  }
+);
 
 watch(search, () => {
   search.value && search.value !== select.value && fetchLocations();
@@ -33,16 +40,18 @@ watch(search, () => {
 watch(select, async () => {
   if (select.value) {
     autoco.value.blur();
-    const name = `${select.value.name} (${select.value.country})`;
+    const name: string = `${select.value.name} (${select.value.country})`;
+    locationStore.selectLocation(select.value);
     await sunriseStore.fetchTodayInfo(
       name,
       Number(select.value.lat),
       Number(select.value.lon)
     );
+    await weatherStore.fetchWeather(select.value.lat, select.value.lon);
   }
 });
 
-const noDataText = computed(() =>
+const noDataText: ComputedRef<string> = computed(() =>
   search.value && !loading.value ? 'No se encontraron resultados' : ''
 );
 </script>
@@ -64,7 +73,6 @@ const noDataText = computed(() =>
       item-props
       menu-icon=""
       single-line
-      rounded
       clearable
       theme="light"
       variant="solo"

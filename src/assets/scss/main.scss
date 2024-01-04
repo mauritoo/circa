@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@10..48,200;10..48,700&display=swap');
 
-html, body {
+html,
+body {
   font-family: 'Bricolage Grotesque', sans-serif;
   height: -webkit-fill-available;
 }
@@ -8,8 +9,8 @@ html, body {
 #app {
   font-family: 'Bricolage Grotesque', sans-serif;
   height: -webkit-fill-available;
-  background-color: rgb(242 137 163);
-  background-image: url('../../assets/images/sun_back.png');
+  background-color: #4c7de7;
+  _background-image: url('../../assets/images/sun_back.png');
   background-position: center;
 }
 
@@ -19,7 +20,9 @@ html {
     margin: 0;
   }
 }
-.v-layout, .v-main, .main-container {
+.v-layout,
+.v-main,
+.main-container {
   height: -webkit-fill-available;
 }
 

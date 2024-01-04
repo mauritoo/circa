@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia';
-import axios from 'axios';
+import LocationsApi from '../api/locationsApi';
 
 export const useLocationStore = defineStore('location', {
   state: () => ({
@@ -7,33 +7,28 @@ export const useLocationStore = defineStore('location', {
     isError: false as boolean,
     isResponseOk: false as boolean,
     locations: [] as MyLocation[],
+    selectedLocation: {} as MyLocation,
   }),
   getters: {
-    getLocations(state) {
-      return state.locations;
-    },
-    getIsLoading(state) {
-      return state.isLoading;
-    },
-    getIsError(state) {
-      return state.isError;
-    },
-    getIsResponseOk(state) {
-      return state.isResponseOk;
-    },
+    getLocations: (state) => state.locations,
+    getSelectedLocation: (state) => state.selectedLocation,
+    getIsLoading: (state) => state.isLoading,
+    getIsError: (state) => state.isError,
+    getIsResponseOk: (state) => state.isResponseOk,
   },
   actions: {
     async fetchLocations(
       placeName: string = '',
-      limit: number = 15
+      limit: number = 5
     ): Promise<MyLocation[]> {
       try {
+        const locationsApi = new LocationsApi();
         this.isLoading = true;
         this.isError = false;
-        const apiKey = import.meta.env.VITE_API_KEY_LOCATION;
-        const baseApiUrl = import.meta.env.VITE_BASE_API_LOCATION;
-        const url = `${baseApiUrl}/direct?q=${placeName}&limit=${limit}&appid=${apiKey}`;
-        const { data } = await axios.get(url);
+        const data: MyLocation[] = await locationsApi.fetchLocations(
+          placeName,
+          limit
+        );
         this.locations = data;
         return this.locations;
       } catch (error) {
@@ -43,6 +38,9 @@ export const useLocationStore = defineStore('location', {
         this.isLoading = false;
         return this.locations;
       }
+    },
+    selectLocation(location: MyLocation): void {
+      this.selectedLocation = location;
     },
   },
 });
